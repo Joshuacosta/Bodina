@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".Celebracions">
+    <item android:id="@+id/celebracions_Afegir"
+          android:title="@string/menu_celebracions_Afegir"
+          android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/celebracions_Configuracio"
+          android:title="@string/menu_celebracions_Configuracio"
+          android:orderInCategory="101" app:showAsAction="never" />
+    <item android:id="@+id/celebracions_Actualitzar"
+          android:title="@string/menu_celebracions_Actualitzar"
+          android:orderInCategory="102" app:showAsAction="never" />
+</menu>

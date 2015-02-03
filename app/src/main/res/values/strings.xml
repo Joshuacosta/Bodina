@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Layout Celebracions -->
+    <string name="app_name">Bodina</string>
+    <string name="menu_celebracions_Afegir">Add event</string>
+    <string name="menu_celebracions_Configuracio">Settings</string>
+    <string name="menu_celebracions_Actualitzar">Refresh</string>
+
+    <!-- Layout Configuracio -->
+    <string name="title_activity_configuracio">Settings</string>
+    <string name="Configuracio_Nom">Name</string>
+    <string name="Configuracio_eMail">e-Mail</string>
+    <string name="Configuracio_Idioma">Select language to comunicate...</string>
+    <string name="Configuracio_Pais">Select country...</string>
+
+    <!-- Layout EntitatAlta-->
+    <string name="title_activity_entitat_alta">Append entity</string>
+
+
+    <!-- String-Arrays -->
+    <string-array name="Idioma">
+        <item>@string/Configuracio_Idioma</item>
+        <item>English</item>
+        <item>Spanish</item>
+        <item>Catalan</item>
+    </string-array>
+
+    <string-array name="Paisos">
+        <item>@string/Configuracio_Pais</item>
+        <item>Malaysia</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
+
+</resources>
