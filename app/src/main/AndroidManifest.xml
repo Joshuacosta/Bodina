@@ -24,6 +24,14 @@
             android:name=".Configuracio"
             android:label="@string/title_activity_configuracio" >
         </activity>
+        <activity
+            android:name=".EntitatDades"
+            android:label="@string/title_activity_entitat_dades" >
+        </activity>
+        <activity
+            android:name=".EntitatRecerca"
+            android:label="@string/title_activity_entitat_recerca" >
+        </activity>
     </application>
 
 </manifest>

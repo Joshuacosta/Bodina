@@ -17,9 +17,8 @@
     <string name="Configuracio_Idioma">Select language to comunicate...</string>
     <string name="Configuracio_Pais">Select country...</string>
 
-    <!-- Layout EntitatAlta-->
+    <!-- Layout EntitatAlta -->
     <string name="title_activity_entitat_alta">Append entity</string>
-
 
     <!-- String-Arrays -->
     <string-array name="Idioma">
@@ -28,7 +27,6 @@
         <item>Spanish</item>
         <item>Catalan</item>
     </string-array>
-
     <string-array name="Paisos">
         <item>@string/Configuracio_Pais</item>
         <item>Malaysia</item>
@@ -40,5 +38,8 @@
         <item>New Zealand</item>
         <item>India</item>
     </string-array>
+
+    <string name="title_activity_entitat_dades">entitatDades</string>
+    <string name="title_activity_entitat_recerca">EntitatRecerca</string>
 
 </resources>
