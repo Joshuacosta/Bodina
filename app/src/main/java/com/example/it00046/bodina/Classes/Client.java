@@ -18,7 +18,7 @@ public class Client
     public String DataAltaTexte = new String();
     public String CodiIdioma = new String();
 
-    public Client()
+    public void Client()
     {
         CodiClient = "";		// Es el codi de client que donarem la primera vegada
         CodiClientIntern = "";  // Es la MAC del movil/tablet que ens conecta i necessitem per validar-ho tot

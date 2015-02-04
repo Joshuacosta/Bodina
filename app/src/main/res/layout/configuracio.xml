@@ -30,8 +30,8 @@
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/spinnerIdioma"
-        android:entries="@array/Idioma"/>
+        android:id="@+id/spinnerIdioma"/>
+    <!-- android:entries="@array/Idioma"/ -->
 
     <Spinner
         android:layout_margin="10dp"
@@ -39,5 +39,46 @@
         android:layout_height="wrap_content"
         android:id="@+id/spinnerPais"
         android:entries="@array/Paisos"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TexteContacte"
+        android:hint="@string/Configuracio_Contacte" />
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/calc_txt_Prise"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:layout_marginTop="20dp"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            android:hint="@string/Configuracio_Contacte"
+            android:singleLine="true" />
+
+        <Button
+            android:id="@+id/calc_clear_txt_Prise"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginRight="5dp"
+            android:layout_gravity="right|center_vertical"
+            android:background="@android:drawable/ic_delete" />
+
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="\@string/Configuracio_DataAlta"
+        android:id="@+id/textView"
+        android:layout_marginTop="30dp"/>
 
 </LinearLayout>

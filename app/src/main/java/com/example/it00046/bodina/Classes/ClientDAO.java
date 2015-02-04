@@ -3,6 +3,7 @@ package com.example.it00046.bodina.Classes;
 /**
  * Created by Joshua on 04/02/2015.
  */
+/*
 public final class ClientDAO
 {
     // Aquesta funcio recupera les dades desde la BBDD client
@@ -189,3 +190,4 @@ public final class ClientDAO
         return true;
     }
 }
+*/

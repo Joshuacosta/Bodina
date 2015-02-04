@@ -5,15 +5,34 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.Toast;
+
+import com.example.it00046.bodina.Classes.Globals;
 
 
 public class Celebracions extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Intent intent;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.celebracions);
+        // Si estem executant i no hem trobat dades (no existia la BBD) obrim la finestra de
+        // configuració perque l'usuari determini Pais, idioma (abans hem aplicat el del
+        // telefon) i resta de informació personal
+        if (Globals.g_NoHiHanDades == false){
+            intent = new Intent(this, Configuracio.class);
+            startActivity(intent);
+        }
+        else{
+            //Haurem de carregar la llista de entitats i celebracions del client;
+        }
     }
+
 
 
     @Override
@@ -42,7 +61,7 @@ public class Celebracions extends ActionBarActivity {
                 startActivity(intent);
                 return true;
             case R.id.celebracions_Actualitzar:
-
+                //
                 return true;
         }
         return super.onOptionsItemSelected(item);
