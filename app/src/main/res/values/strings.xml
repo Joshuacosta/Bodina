@@ -18,9 +18,37 @@
     <string name="Configuracio_Pais">Select country...</string>
     <string name="Configuracio_Contacte">Contact</string>
     <string name="Configuracio_DataAlta">Entry date</string>
+    <string name="Configuracio_BotoAcceptar">Accept</string>
 
     <!-- Layout EntitatAlta -->
     <string name="title_activity_entitat_alta">Append entity</string>
+
+    <!-- Layout Entitat dades -->
+    <string name="title_activity_entitat_dades">entitatDades</string>
+
+    <!-- Layout Entitat recerca -->
+    <string name="title_activity_entitat_recerca">EntitatRecerca</string>
+
+    <!-- Base de dades -->
+    <string name="TaulaClients">CREATE TABLE Client ( +
+                CodiClient VARCHAR(10) PRIMARY KEY, +
+                eMail VARCHAR(100), +
+				Nom VARCHAR(100), +
+				Pais VARCHAR(20), +
+				Contacte VARCHAR(100), +
+				DataAlta VARCHAR(20), +
+				Idioma VARCHAR(20),+
+				Actualitzat INTEGER)</string>
+    <string name="TaulaClientsDrop">DROP TABLE Client</string>
+    <string-array name="TaulaClientCamps">
+        <item>CodiClient</item>
+        <item>eMail</item>
+        <item>Nom</item>
+        <item>Pais</item>
+        <item>Contacte</item>
+        <item>DataAlta</item>
+        <item>Idioma</item>
+    </string-array>
 
     <!-- String-Arrays -->
     <string-array name="Idioma">
@@ -294,8 +322,4 @@
         <item>New Zealand</item>
         <item>India</item>
     </string-array>
-
-    <string name="title_activity_entitat_dades">entitatDades</string>
-    <string name="title_activity_entitat_recerca">EntitatRecerca</string>
-
 </resources>

@@ -73,12 +73,36 @@
 
     </FrameLayout>
 
-    <TextView
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="\@string/Configuracio_DataAlta"
+            android:id="@+id/litDataAlta"/>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="dd/mm/yyyy"
+            android:id="@+id/textDataAlta"/>
+
+    </LinearLayout>
+
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="\@string/Configuracio_DataAlta"
-        android:id="@+id/textView"
-        android:layout_marginTop="30dp"/>
+        android:text="@string/Configuracio_BotoAcceptar"
+        android:id="@+id/btnAceptar"
+        android:layout_gravity="right"
+        android:onClick="btnAcceptarOnClick()" />
 
 </LinearLayout>
