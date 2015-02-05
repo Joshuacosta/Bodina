@@ -16,7 +16,7 @@ public class Client
     public String Contacte = new String();
     public Date DataAlta ;
     public String DataAltaTexte = new String();
-    public String CodiIdioma = new String();
+    public String Idioma = new String();
 
     public void Client()
     {
@@ -26,7 +26,7 @@ public class Client
         Nom = "";
         Pais = "";
         Contacte = "";
-        CodiIdioma = "";
+        Idioma = "";
         DataAltaTexte = "";
     }
 }
