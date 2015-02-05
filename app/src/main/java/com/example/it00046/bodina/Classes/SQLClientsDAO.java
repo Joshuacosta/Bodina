@@ -191,3 +191,94 @@ public final class ClientDAO
     }
 }
 */
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
+import android.database.sqlite.SQLiteDatabase;
+import com.example.it00046.bodina.R;
+
+public class SQLClientsDAO {
+
+    // Database fields
+    private SQLiteDatabase database;
+    private SQLClients dbHelper;
+    private String[] allColumns = Globals.g_Native.getResources().getStringArray(R.array.TaulaClientCamps);
+
+    public SQLClientsDAO(Context context) {
+        dbHelper = new SQLClients(context);
+    }
+
+    public void open() throws SQLException {
+        database = dbHelper.getWritableDatabase();
+    }
+
+    public void close() {
+        dbHelper.close();
+    }
+
+    public void createClient(Client client) {
+        ContentValues values = new ContentValues();
+        values.put(SQLClients.Camp_CodiClient, client.CodiClient);
+        values.put(SQLClients.Camp_Contacte, client.Contacte);
+        values.put(SQLClients.Camp_DataAlta, client.DataAltaTexte);
+        values.put(SQLClients.Camp_eMail, client.eMail);
+        values.put(SQLClients.Camp_Idioma, client.Idioma);
+        values.put(SQLClients.Camp_Nom, client.Nom);
+        values.put(SQLClients.Camp_Pais, client.Pais);
+        long insertId = database.insert(SQLClients.Nom, null, values);
+
+        /*
+            Aquest codi serveix per donar un identificador a la insercio i
+            despres com tornem lo inserit sabem quin valor s'ens ha donat
+
+        Cursor cursor = database.query(SQLClients.TABLE_COMMENTS,
+                allColumns, SQLClients.COLUMN_ID + " = " + insertId, null,
+                null, null, null);
+        cursor.moveToFirst();
+        Client newClient = cursorToComment(cursor);
+        cursor.close();
+        return newClient;
+        */
+    }
+
+    public void deleteComment(Client client) {
+        String id = client.CodiClient;
+        database.delete(SQLClients.Nom, SQLClients.Camp_CodiClient + " = " + id, null);
+    }
+
+    public List<Client> getAllComments() {
+        List<Client> comments = new ArrayList<Client>();
+
+        Cursor cursor = database.query(SQLClients.Nom,
+                allColumns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Client client = cursorToClient(cursor);
+            comments.add(client);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+        return comments;
+    }
+
+    private Client cursorToClient(Cursor cursor) {
+        Client client = new Client();
+
+        client.CodiClient = cursor.getString(0);
+        client.eMail = cursor.getString(1);
+        client.Nom = cursor.getString(2);
+        client.Pais = cursor.getString(3);
+        client.Contacte = cursor.getString(4);
+        client.DataAltaTexte = cursor.getString(5);
+        client.Idioma = cursor.getString(6);
+
+        return client;
+    }
+}

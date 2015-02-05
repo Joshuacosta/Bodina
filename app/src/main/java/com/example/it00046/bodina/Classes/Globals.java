@@ -26,7 +26,7 @@ public final class Globals
 
     public void Globals()
     {
-        g_Client.CodiIdioma = "";
+        g_Client.Idioma = "";
         g_Client.Pais = "";
         g_Client.Nom = "";
         g_Client.Contacte = "";

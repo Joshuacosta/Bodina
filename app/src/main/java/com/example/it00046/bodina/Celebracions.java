@@ -31,6 +31,8 @@ public class Celebracions extends ActionBarActivity {
         else{
             //Haurem de carregar la llista de entitats i celebracions del client;
         }
+        // Definim contexte a nivel global
+        Globals.g_Native = this.getApplicationContext();
     }
 
 

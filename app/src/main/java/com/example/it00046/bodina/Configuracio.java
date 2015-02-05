@@ -7,15 +7,20 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.example.it00046.bodina.Classes.Client;
+import com.example.it00046.bodina.Classes.SQLClients;
+import com.example.it00046.bodina.Classes.SQLClientsDAO;
 import com.example.it00046.bodina.Listen.OnItemSelected_Listener_SpinnerIdioma;
 
 
 public class Configuracio extends ActionBarActivity{
 
     private Spinner l_SpinnerIdioma;
+    private SQLClientsDAO sqlclientsDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,25 @@ public class Configuracio extends ActionBarActivity{
         l_SpinnerIdioma.setAdapter(adapter);
 
         l_SpinnerIdioma.setOnItemSelectedListener(new OnItemSelected_Listener_SpinnerIdioma());
+
+        // Codi btnAceptar
+        final Button button = (Button) findViewById(R.id.btnAceptar);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Perform action on click
+
+            }
+        });
+
+        sqlclientsDAO = new SQLClientsDAO(this);
+        sqlclientsDAO.open();
+    }
+
+    public void btnAcceptarOnClick(View view){
+        // Codi
+        Client client = new Client();
+
+        sqlclientsDAO.createClient(client);
     }
 
     @Override
