@@ -15,6 +15,7 @@ public final class Globals
     public static Context g_Native;
     public static Boolean g_HiHaXarxa = false;
 
+    public static SQLClientsDAO g_DataBase;
     // Constants
     // Operatives
     public static final int k_OPE_Alta = 0;
@@ -26,6 +27,7 @@ public final class Globals
 
     public void Globals()
     {
+        g_Client.CodiClient = "";
         g_Client.Idioma = "";
         g_Client.Pais = "";
         g_Client.Nom = "";

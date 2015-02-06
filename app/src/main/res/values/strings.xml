@@ -30,14 +30,14 @@
     <string name="title_activity_entitat_recerca">EntitatRecerca</string>
 
     <!-- Base de dades -->
-    <string name="TaulaClients">CREATE TABLE Client ( +
-                CodiClient VARCHAR(10) PRIMARY KEY, +
-                eMail VARCHAR(100), +
-				Nom VARCHAR(100), +
-				Pais VARCHAR(20), +
-				Contacte VARCHAR(100), +
-				DataAlta VARCHAR(20), +
-				Idioma VARCHAR(20),+
+    <string name="TaulaClients">CREATE TABLE Client (
+                CodiClient VARCHAR(10) PRIMARY KEY,
+                eMail VARCHAR(100),
+				Nom VARCHAR(100),
+				Pais VARCHAR(20),
+				Contacte VARCHAR(100),
+				DataAlta VARCHAR(20),
+				Idioma VARCHAR(20),
 				Actualitzat INTEGER)</string>
     <string name="TaulaClientsDrop">DROP TABLE Client</string>
     <string-array name="TaulaClientCamps">

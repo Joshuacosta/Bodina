@@ -7,7 +7,6 @@ import android.util.Log;
 import com.example.it00046.bodina.R;
 
 public class SQLClients extends SQLiteOpenHelper {
-
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
@@ -32,11 +31,12 @@ public class SQLClients extends SQLiteOpenHelper {
         // SQL statement to create book table
         String CREATE_T_Clients = Globals.g_Native.getString(R.string.TaulaClients);
         db.execSQL(CREATE_T_Clients);
+        // Si executem aixó es que hem creat la BBDD
+        Globals.g_NoHiHanDades = true;
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.w(SQLClients.class.getName(), "Update database de " + oldVersion + " a " + newVersion + ".");
         // Drop Taula clients
         db.execSQL(Globals.g_Native.getString(R.string.TaulaClientsDrop));
         // create fresh books table

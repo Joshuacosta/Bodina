@@ -246,13 +246,13 @@ public class SQLClientsDAO {
         */
     }
 
-    public void deleteComment(Client client) {
+    public void deleteClient(Client client) {
         String id = client.CodiClient;
         database.delete(SQLClients.Nom, SQLClients.Camp_CodiClient + " = " + id, null);
     }
 
-    public List<Client> getAllComments() {
-        List<Client> comments = new ArrayList<Client>();
+    public List<Client> getAllClients() {
+        List<Client> clients = new ArrayList<Client>();
 
         Cursor cursor = database.query(SQLClients.Nom,
                 allColumns, null, null, null, null, null);
@@ -260,14 +260,34 @@ public class SQLClientsDAO {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             Client client = cursorToClient(cursor);
-            comments.add(client);
+            clients.add(client);
             cursor.moveToNext();
         }
         // make sure to close the cursor
         cursor.close();
-        return comments;
+        return clients;
     }
 
+    // Client nomès tenim un, el recuperem
+    public Client RecuperaClient(){
+        Client client = new Client();
+
+        Cursor cursor = database.query(SQLClients.Nom, // a. table
+                                        allColumns, // b. column names
+                                        null, // c. selections
+                                        null, // d. selections args
+                                        null, // e. group by
+                                        null, // f. having
+                                        null, // g. order by
+                                        null); // h. limit
+        if (cursor != null)
+            cursor.moveToFirst();
+
+        return cursorToClient(cursor);
+    }
+
+    //
+    // Funcions privades
     private Client cursorToClient(Cursor cursor) {
         Client client = new Client();
 

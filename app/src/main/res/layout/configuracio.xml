@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="\@string/Configuracio_DataAlta"
+            android:text="@string/Configuracio_DataAlta"
             android:id="@+id/litDataAlta"/>
 
         <TextView
@@ -103,6 +103,6 @@
         android:text="@string/Configuracio_BotoAcceptar"
         android:id="@+id/btnAceptar"
         android:layout_gravity="right"
-        android:onClick="btnAcceptarOnClick()" />
+        android:onClick="btnAcceptarOnClick" />
 
 </LinearLayout>

@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.it00046.bodina.Classes.Client;
+import com.example.it00046.bodina.Classes.Globals;
 import com.example.it00046.bodina.Classes.SQLClients;
 import com.example.it00046.bodina.Classes.SQLClientsDAO;
 import com.example.it00046.bodina.Listen.OnItemSelected_Listener_SpinnerIdioma;
@@ -20,6 +22,7 @@ import com.example.it00046.bodina.Listen.OnItemSelected_Listener_SpinnerIdioma;
 public class Configuracio extends ActionBarActivity{
 
     private Spinner l_SpinnerIdioma;
+    private EditText l_TextName, l_TexteMail, l_TexteContacte;
     private SQLClientsDAO sqlclientsDAO;
 
     @Override
@@ -40,7 +43,8 @@ public class Configuracio extends ActionBarActivity{
 
         l_SpinnerIdioma.setOnItemSelectedListener(new OnItemSelected_Listener_SpinnerIdioma());
 
-        // Codi btnAceptar
+        /*
+        // Codi btnAceptar com classe buida
         final Button button = (Button) findViewById(R.id.btnAceptar);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -48,16 +52,28 @@ public class Configuracio extends ActionBarActivity{
 
             }
         });
+        */
 
-        sqlclientsDAO = new SQLClientsDAO(this);
-        sqlclientsDAO.open();
+        if (Globals.g_Client.CodiClient != ""){
+            // Mostrem dades
+            l_TextName = (EditText) findViewById(R.id.TextName);
+            l_TexteMail = (EditText) findViewById(R.id.TexteMail);
+            l_TexteContacte = (EditText) findViewById(R.id.TexteContacte);
+
+            l_TextName.setText(Globals.g_Client.Nom);
+            l_TexteMail.setText(Globals.g_Client.eMail);
+            l_TexteContacte.setText(Globals.g_Client.Contacte);
+        }
     }
 
     public void btnAcceptarOnClick(View view){
         // Codi
         Client client = new Client();
+        client.Nom = l_TextName.getText().toString();
+        client.eMail = l_TexteMail.getText().toString();
+        client.Contacte = l_TexteContacte.getText().toString();
 
-        sqlclientsDAO.createClient(client);
+        Globals.g_DataBase.createClient(client);
     }
 
     @Override
