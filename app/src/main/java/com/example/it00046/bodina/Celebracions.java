@@ -15,33 +15,32 @@ import com.example.it00046.bodina.Classes.SQLClientsDAO;
 
 
 public class Celebracions extends ActionBarActivity {
-    // DataBase
-    private SQLClientsDAO dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Intent intent;
+        Globals X = new Globals();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.celebracions);
 
+
         // Definim contexte a nivel global
         Globals.g_Native = this.getApplicationContext();
 
-        dataBase = new SQLClientsDAO(this);
-        dataBase.open();
-        Globals.g_DataBase = dataBase;
+        Globals.g_DB_DAO = new SQLClientsDAO(this);
+        Globals.g_DB_DAO.open();
 
         // Si estem executant i no hem trobat dades (no existia la BBDD) obrim la finestra de
         // configuració perque l'usuari determini Pais, idioma (abans hem aplicat el del
         // telefon) i resta de informació personal
+        Globals.g_Client = Globals.g_DB_DAO.RecuperaClient();
         if (Globals.g_NoHiHanDades == true){
             intent = new Intent(this, Configuracio.class);
             startActivity(intent);
         }
         else{
             //Haurem de carregar la llista de entitats i celebracions del client;
-            Globals.g_Client = dataBase.RecuperaClient();
         }
     }
 

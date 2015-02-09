@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.it00046.bodina.Classes.Client;
 import com.example.it00046.bodina.Classes.Globals;
-import com.example.it00046.bodina.Classes.SQLClients;
 import com.example.it00046.bodina.Classes.SQLClientsDAO;
 import com.example.it00046.bodina.Listen.OnItemSelected_Listener_SpinnerIdioma;
 
@@ -73,7 +72,10 @@ public class Configuracio extends ActionBarActivity{
         client.eMail = l_TexteMail.getText().toString();
         client.Contacte = l_TexteContacte.getText().toString();
 
-        Globals.g_DataBase.createClient(client);
+        Globals.g_DB_DAO.createClient(client);
+        // Gravem les dades del client i tornem enrera
+        Globals.g_Client = client;
+        this.finish();
     }
 
     @Override

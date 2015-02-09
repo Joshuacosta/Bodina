@@ -1,18 +1,19 @@
 package com.example.it00046.bodina.Classes;
 
+import android.database.SQLException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import com.example.it00046.bodina.R;
 
-public class SQLClients extends SQLiteOpenHelper {
+public class SQLDB extends SQLiteOpenHelper {
     // Database Version
     private static final int DATABASE_VERSION = 1;
     // Database Name
     private static final String DATABASE_NAME = "BodinaDB";
     // Nom taula
-    public static final String Nom = "Clients";
+    public static final String Nom = "Client";
     // Camps
     public static final String Camp_CodiClient = "CodiClient";
     public static final String Camp_eMail = "eMail";
@@ -22,7 +23,7 @@ public class SQLClients extends SQLiteOpenHelper {
     public static final String Camp_DataAlta = "DataAlta";
     public static final String Camp_Idioma = "Idioma";
 
-    public SQLClients(Context context) {
+    public SQLDB(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -31,7 +32,7 @@ public class SQLClients extends SQLiteOpenHelper {
         // SQL statement to create book table
         String CREATE_T_Clients = Globals.g_Native.getString(R.string.TaulaClients);
         db.execSQL(CREATE_T_Clients);
-        // Si executem aixó es que hem creat la BBDD
+        // Si executem aixó es que hem creat la BBDD i no hi han dades
         Globals.g_NoHiHanDades = true;
     }
 

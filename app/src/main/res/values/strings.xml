@@ -30,25 +30,38 @@
     <string name="title_activity_entitat_recerca">EntitatRecerca</string>
 
     <!-- Base de dades -->
-    <string name="TaulaClients">CREATE TABLE Client (
-                CodiClient VARCHAR(10) PRIMARY KEY,
-                eMail VARCHAR(100),
-				Nom VARCHAR(100),
-				Pais VARCHAR(20),
-				Contacte VARCHAR(100),
-				DataAlta VARCHAR(20),
-				Idioma VARCHAR(20),
-				Actualitzat INTEGER)</string>
-    <string name="TaulaClientsDrop">DROP TABLE Client</string>
+    <!-- Taula Client -->
+    <string name="Client_Taula">Client</string>
+    <string name="Client_CampCodiClient">CodiClient</string>
+    <string name="Client_CampeMail">eMail</string>
+    <string name="Client_CampNom">Nom</string>
+    <string name="Client_CampPais">Pais</string>
+    <string name="Client_CampContacte">Contacte</string>
+    <string name="Client_CampDataAlta">DataAlta</string>
+    <string name="Client_CampIdioma">Idioma</string>
+    <string name="Client_CampActualitzat">Actualitzat</string>
+    <string name="TaulaClients">CREATE TABLE @string/Client_Taula (
+                                @string/Client_CampCodiClient VARCHAR(10) PRIMARY KEY,
+                                @string/Client_CampeMail VARCHAR(100),
+				                @string/Client_CampNom VARCHAR(100),
+				                @string/Client_CampPais VARCHAR(20),
+				                @string/Client_CampContacte VARCHAR(100),
+				                @string/Client_CampDataAlta VARCHAR(20),
+				                @string/Client_CampIdioma VARCHAR(20),
+				                @string/Client_CampActualitzat INTEGER)
+    </string>
+    <string name="TaulaClientsDrop">DROP TABLE @string/Client_Taula</string>
     <string-array name="TaulaClientCamps">
-        <item>CodiClient</item>
-        <item>eMail</item>
-        <item>Nom</item>
-        <item>Pais</item>
-        <item>Contacte</item>
-        <item>DataAlta</item>
-        <item>Idioma</item>
+        <item>@string/Client_CampCodiClient</item>
+        <item>@string/Client_CampeMail</item>
+        <item>@string/Client_CampNom</item>
+        <item>@string/Client_CampPais</item>
+        <item>@string/Client_CampContacte</item>
+        <item>@string/Client_CampDataAlta</item>
+        <item>@string/Client_CampIdioma</item>
     </string-array>
+
+
 
     <!-- String-Arrays -->
     <string-array name="Idioma">
@@ -312,14 +325,5 @@
         <item>South Africa</item>
         <item>Zambia</item>
         <item>Zimbabwe</item>
-
-        <item>Malaysia</item>
-        <item>United States</item>
-        <item>Indonesia</item>
-        <item>France</item>
-        <item>Italy</item>
-        <item>Singapore</item>
-        <item>New Zealand</item>
-        <item>India</item>
     </string-array>
 </resources>

@@ -1,6 +1,7 @@
 package com.example.it00046.bodina.Classes;
 
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import java.util.Date;
 
@@ -15,7 +16,8 @@ public final class Globals
     public static Context g_Native;
     public static Boolean g_HiHaXarxa = false;
 
-    public static SQLClientsDAO g_DataBase;
+    public static SQLClientsDAO g_DB_DAO;
+    public static SQLiteDatabase g_DB;
     // Constants
     // Operatives
     public static final int k_OPE_Alta = 0;
@@ -27,13 +29,5 @@ public final class Globals
 
     public void Globals()
     {
-        g_Client.CodiClient = "";
-        g_Client.Idioma = "";
-        g_Client.Pais = "";
-        g_Client.Nom = "";
-        g_Client.Contacte = "";
-        g_Client.eMail = "";
-        g_Client.DataAlta = new Date();
-        g_NoHiHanDades = true;
     }
 }

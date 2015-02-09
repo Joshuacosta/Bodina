@@ -200,37 +200,47 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.Settings;
+import android.util.Log;
+
 import com.example.it00046.bodina.R;
 
 public class SQLClientsDAO {
-
     // Database fields
-    private SQLiteDatabase database;
-    private SQLClients dbHelper;
+    private SQLDB db;
     private String[] allColumns = Globals.g_Native.getResources().getStringArray(R.array.TaulaClientCamps);
 
     public SQLClientsDAO(Context context) {
-        dbHelper = new SQLClients(context);
+        db = new SQLDB(context);
     }
 
     public void open() throws SQLException {
-        database = dbHelper.getWritableDatabase();
+        Globals.g_DB = db.getWritableDatabase();
     }
 
     public void close() {
-        dbHelper.close();
+        Globals.g_DB.close();
     }
 
     public void createClient(Client client) {
         ContentValues values = new ContentValues();
-        values.put(SQLClients.Camp_CodiClient, client.CodiClient);
-        values.put(SQLClients.Camp_Contacte, client.Contacte);
-        values.put(SQLClients.Camp_DataAlta, client.DataAltaTexte);
-        values.put(SQLClients.Camp_eMail, client.eMail);
-        values.put(SQLClients.Camp_Idioma, client.Idioma);
-        values.put(SQLClients.Camp_Nom, client.Nom);
-        values.put(SQLClients.Camp_Pais, client.Pais);
-        long insertId = database.insert(SQLClients.Nom, null, values);
+        //values.put(SQLDB.Camp_CodiClient, client.CodiClient);
+        //values.put(SQLDB.Camp_Contacte, client.Contacte);
+        //values.put(SQLDB.Camp_DataAlta, client.DataAltaTexte);
+        //values.put(SQLDB.Camp_eMail, client.eMail);
+        //values.put(SQLDB.Camp_Idioma, client.Idioma);
+        //values.put(SQLDB.Camp_Nom, client.Nom);
+        //values.put(SQLDB.Camp_Pais, client.Pais);
+        values.put(Globals.g_Native.getString(R.string.Client_CampCodiClient), client.CodiClient);
+        values.put(Globals.g_Native.getString(R.string.Client_CampContacte), client.Contacte);
+        values.put(Globals.g_Native.getString(R.string.Client_CampDataAlta), client.DataAltaTexte);
+        values.put(Globals.g_Native.getString(R.string.Client_CampeMail), client.eMail);
+        values.put(Globals.g_Native.getString(R.string.Client_CampIdioma), client.Idioma);
+        values.put(Globals.g_Native.getString(R.string.Client_CampNom), client.Nom);
+        values.put(Globals.g_Native.getString(R.string.Client_CampPais), client.Pais);
+
+        //long insertId = Globals.g_DB.insert(SQLDB.Nom, null, values);
+        long insertId = Globals.g_DB.insert(Globals.g_Native.getString(R.string.Client_Taula), null, values);
 
         /*
             Aquest codi serveix per donar un identificador a la insercio i
@@ -248,13 +258,14 @@ public class SQLClientsDAO {
 
     public void deleteClient(Client client) {
         String id = client.CodiClient;
-        database.delete(SQLClients.Nom, SQLClients.Camp_CodiClient + " = " + id, null);
+        //Globals.g_DB.delete(SQLDB.Nom, SQLDB.Camp_CodiClient + " = " + id, null);
+        Globals.g_DB.delete(Globals.g_Native.getString(R.string.Client_Taula), Globals.g_Native.getString(R.string.Client_CampCodiClient) + " = " + id, null);
     }
 
     public List<Client> getAllClients() {
         List<Client> clients = new ArrayList<Client>();
 
-        Cursor cursor = database.query(SQLClients.Nom,
+        Cursor cursor = Globals.g_DB.query(Globals.g_Native.getString(R.string.Client_Taula),
                 allColumns, null, null, null, null, null);
 
         cursor.moveToFirst();
@@ -272,7 +283,7 @@ public class SQLClientsDAO {
     public Client RecuperaClient(){
         Client client = new Client();
 
-        Cursor cursor = database.query(SQLClients.Nom, // a. table
+        Cursor cursor = Globals.g_DB.query(Globals.g_Native.getString(R.string.Client_Taula), // a. table
                                         allColumns, // b. column names
                                         null, // c. selections
                                         null, // d. selections args
@@ -280,16 +291,22 @@ public class SQLClientsDAO {
                                         null, // f. having
                                         null, // g. order by
                                         null); // h. limit
-        if (cursor != null)
-            cursor.moveToFirst();
 
-        return cursorToClient(cursor);
+        if (cursor.getCount() == 1) {
+            cursor.moveToFirst();
+            client = cursorToClient(cursor);
+        }
+        else {
+            Globals.g_NoHiHanDades = true;
+        }
+        return client;
     }
 
     //
     // Funcions privades
     private Client cursorToClient(Cursor cursor) {
         Client client = new Client();
+
 
         client.CodiClient = cursor.getString(0);
         client.eMail = cursor.getString(1);

@@ -28,5 +28,6 @@ public class Client
         Contacte = "";
         Idioma = "";
         DataAltaTexte = "";
+        DataAlta = new Date();
     }
 }
