@@ -208,7 +208,7 @@ import com.example.it00046.bodina.R;
 public class SQLClientsDAO {
     // Database fields
     private SQLDB db;
-    private String[] allColumns = Globals.g_Native.getResources().getStringArray(R.array.TaulaClientCamps);
+    private String[] allColumns = Globals.g_Native.getResources().getStringArray(R.array.TClient_Camps);
 
     public SQLClientsDAO(Context context) {
         db = new SQLDB(context);
@@ -224,23 +224,15 @@ public class SQLClientsDAO {
 
     public void createClient(Client client) {
         ContentValues values = new ContentValues();
-        //values.put(SQLDB.Camp_CodiClient, client.CodiClient);
-        //values.put(SQLDB.Camp_Contacte, client.Contacte);
-        //values.put(SQLDB.Camp_DataAlta, client.DataAltaTexte);
-        //values.put(SQLDB.Camp_eMail, client.eMail);
-        //values.put(SQLDB.Camp_Idioma, client.Idioma);
-        //values.put(SQLDB.Camp_Nom, client.Nom);
-        //values.put(SQLDB.Camp_Pais, client.Pais);
-        values.put(Globals.g_Native.getString(R.string.Client_CampCodiClient), client.CodiClient);
-        values.put(Globals.g_Native.getString(R.string.Client_CampContacte), client.Contacte);
-        values.put(Globals.g_Native.getString(R.string.Client_CampDataAlta), client.DataAltaTexte);
-        values.put(Globals.g_Native.getString(R.string.Client_CampeMail), client.eMail);
-        values.put(Globals.g_Native.getString(R.string.Client_CampIdioma), client.Idioma);
-        values.put(Globals.g_Native.getString(R.string.Client_CampNom), client.Nom);
-        values.put(Globals.g_Native.getString(R.string.Client_CampPais), client.Pais);
+        values.put(Globals.g_Native.getString(R.string.TClient_CodiClient), client.CodiClient);
+        values.put(Globals.g_Native.getString(R.string.TClient_Contacte), client.Contacte);
+        values.put(Globals.g_Native.getString(R.string.TClient_DataAlta), client.DataAltaTexte);
+        values.put(Globals.g_Native.getString(R.string.TClient_eMail), client.eMail);
+        values.put(Globals.g_Native.getString(R.string.TClient_Idioma), client.Idioma);
+        values.put(Globals.g_Native.getString(R.string.TClient_Nom), client.Nom);
+        values.put(Globals.g_Native.getString(R.string.TClient_Pais), client.Pais);
 
-        //long insertId = Globals.g_DB.insert(SQLDB.Nom, null, values);
-        long insertId = Globals.g_DB.insert(Globals.g_Native.getString(R.string.Client_Taula), null, values);
+        long insertId = Globals.g_DB.insert(Globals.g_Native.getString(R.string.TClient), null, values);
 
         /*
             Aquest codi serveix per donar un identificador a la insercio i
@@ -258,14 +250,13 @@ public class SQLClientsDAO {
 
     public void deleteClient(Client client) {
         String id = client.CodiClient;
-        //Globals.g_DB.delete(SQLDB.Nom, SQLDB.Camp_CodiClient + " = " + id, null);
-        Globals.g_DB.delete(Globals.g_Native.getString(R.string.Client_Taula), Globals.g_Native.getString(R.string.Client_CampCodiClient) + " = " + id, null);
+        Globals.g_DB.delete(Globals.g_Native.getString(R.string.TClient), Globals.g_Native.getString(R.string.TClient_CodiClient) + " = " + id, null);
     }
 
     public List<Client> getAllClients() {
         List<Client> clients = new ArrayList<Client>();
 
-        Cursor cursor = Globals.g_DB.query(Globals.g_Native.getString(R.string.Client_Taula),
+        Cursor cursor = Globals.g_DB.query(Globals.g_Native.getString(R.string.TClient),
                 allColumns, null, null, null, null, null);
 
         cursor.moveToFirst();
@@ -279,11 +270,11 @@ public class SQLClientsDAO {
         return clients;
     }
 
-    // Client nomès tenim un, el recuperem
+    // Funcio per recuperar el client, nomès tenim un.
     public Client RecuperaClient(){
         Client client = new Client();
 
-        Cursor cursor = Globals.g_DB.query(Globals.g_Native.getString(R.string.Client_Taula), // a. table
+        Cursor cursor = Globals.g_DB.query(Globals.g_Native.getString(R.string.TClient), // a. table
                                         allColumns, // b. column names
                                         null, // c. selections
                                         null, // d. selections args

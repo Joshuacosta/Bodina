@@ -12,7 +12,6 @@ public class OnItemSelected_Listener_SpinnerIdioma implements OnItemSelectedList
 
     @Override
     public void onItemSelected(AdapterView parent, View view, int pos, long id) {
-
         Toast.makeText(parent.getContext(), "Selected Language : " + parent.getSelectedItem(), Toast.LENGTH_SHORT).show();
     }
 

@@ -29,41 +29,118 @@
     <!-- Layout Entitat recerca -->
     <string name="title_activity_entitat_recerca">EntitatRecerca</string>
 
-    <!-- Base de dades -->
-    <!-- Taula Client -->
-    <string name="Client_Taula">Client</string>
-    <string name="Client_CampCodiClient">CodiClient</string>
-    <string name="Client_CampeMail">eMail</string>
-    <string name="Client_CampNom">Nom</string>
-    <string name="Client_CampPais">Pais</string>
-    <string name="Client_CampContacte">Contacte</string>
-    <string name="Client_CampDataAlta">DataAlta</string>
-    <string name="Client_CampIdioma">Idioma</string>
-    <string name="Client_CampActualitzat">Actualitzat</string>
-    <string name="TaulaClients">CREATE TABLE @string/Client_Taula (
-                                @string/Client_CampCodiClient VARCHAR(10) PRIMARY KEY,
-                                @string/Client_CampeMail VARCHAR(100),
-				                @string/Client_CampNom VARCHAR(100),
-				                @string/Client_CampPais VARCHAR(20),
-				                @string/Client_CampContacte VARCHAR(100),
-				                @string/Client_CampDataAlta VARCHAR(20),
-				                @string/Client_CampIdioma VARCHAR(20),
-				                @string/Client_CampActualitzat INTEGER)
-    </string>
-    <string name="TaulaClientsDrop">DROP TABLE @string/Client_Taula</string>
-    <string-array name="TaulaClientCamps">
-        <item>@string/Client_CampCodiClient</item>
-        <item>@string/Client_CampeMail</item>
-        <item>@string/Client_CampNom</item>
-        <item>@string/Client_CampPais</item>
-        <item>@string/Client_CampContacte</item>
-        <item>@string/Client_CampDataAlta</item>
-        <item>@string/Client_CampIdioma</item>
+    <!-- ################################################################################### -->
+    <!-- B A S E   D E   D A D E S -->
+    <!-- ################################################################################### -->
+    <string name="DBName">BodinaDB</string>
+
+    <!-- FUNCIONS GENERIQUES -->
+
+    <string name="TDrop">DROP TABLE %1</string>
+
+    <!-- .................................................................................. -->
+    <!-- TAULES -->
+    <!-- .................................................................................. -->
+    <!-- CLIENT -->
+    <string name="TClient">Client</string>
+    <!-- Camps -->
+    <string name="TClient_CodiClient">CodiClient</string>
+    <string name="TClient_eMail">eMail</string>
+    <string name="TClient_Nom">Nom</string>
+    <string name="TClient_Pais">Pais</string>
+    <string name="TClient_Contacte">Contacte</string>
+    <string name="TClient_DataAlta">DataAlta</string>
+    <string name="TClient_Idioma">Idioma</string>
+    <string name="TClient_Actualitzat">Actualitzat</string>
+    <!-- Llista camps -->
+    <string-array name="TClient_Camps">
+        <item>@string/TClient_CodiClient</item>
+        <item>@string/TClient_eMail</item>
+        <item>@string/TClient_Nom</item>
+        <item>@string/TClient_Pais</item>
+        <item>@string/TClient_Contacte</item>
+        <item>@string/TClient_DataAlta</item>
+        <item>@string/TClient_Idioma</item>
+        <item>@string/TClient_Actualitzat</item>
     </string-array>
-
-
-
+    <!-- Funcions -->
+    <string name="TClientCreate">CREATE TABLE %1$s (
+                                %2$s VARCHAR(10) PRIMARY KEY,
+                                %3$s VARCHAR(100),
+				                %4$s VARCHAR(100),
+				                %5$s VARCHAR(20),
+				                %6$s VARCHAR(100),
+				                %7$s VARCHAR(20),
+				                %8$s VARCHAR(20),
+				                %9$s INTEGER)
+    </string>
+    <!-- .................................................................................. -->
+    <!-- ENTITATSCLIENT -->
+    <string name="TEntitatsClient">EntitatsClient</string>
+    <!-- Camps -->
+    <string name="TEntitatsClient_CodiEntitat">CodiEntitat</string>
+    <string name="TEntitatsClient_eMailEntitat">eMailEntitat</string>
+    <string name="TEntitatsClient_NomEntitat">NomEntitat</string>
+    <string name="TEntitatsClient_CodiPaisEntitat">CodiPaisEntitat</string>
+    <string name="TEntitatsClient_ContacteEntitat">ContacteEntitat</string>
+    <string name="TEntitatsClient_AdresaEntitat">AdresaEntitat</string>
+    <string name="TEntitatsClient_TelefonEntitat">TelefonEntitat</string>
+    <string name="TEntitatsClient_EstatEntitat">EstatEntitat</string>
+    <string name="TEntitatsClient_DataDarrerCanviEntitat">DataDarrerCanviEntitat</string>
+    <string name="TEntitatsClient_DataPeticioAssociacio">DataPeticioAssociacio</string>
+    <string name="TEntitatsClient_ContacteAssociacio">ContacteAssociacio</string>
+    <string name="TEntitatsClient_DescripcioAssociacio">DescripcioAssociacio</string>
+    <string name="TEntitatsClient_eMailAssociacio">eMailAssociacio</string>
+    <string name="TEntitatsClient_DataAltaAssociacio">DataAltaAssociacio</string>
+    <string name="TEntitatsClient_DataFiAssociacio">DataFiAssociacio</string>
+    <string name="TEntitatsClient_DataDarrerCanviAssociacio">DataDarrerCanviAssociacio</string>
+    <string name="TEntitatsClient_EstatAssociacio">EstatAssociacio</string>
+    <string name="TEntitatsClient_HiHanCanvis">HiHanCanvis</string>
+    <!-- LLista camps -->
+    <string-array name="TEntitatsClient_Camps">
+        <item>@string/TEntitatsClient_CodiEntitat</item>
+        <item>@string/TEntitatsClient_eMailEntitat</item>
+        <item>@string/TEntitatsClient_NomEntitat</item>
+        <item>@string/TEntitatsClient_CodiPaisEntitat</item>
+        <item>@string/TEntitatsClient_ContacteEntitat</item>
+        <item>@string/TEntitatsClient_AdresaEntitat</item>
+        <item>@string/TEntitatsClient_TelefonEntitat</item>
+        <item>@string/TEntitatsClient_EstatEntitat</item>
+        <item>@string/TEntitatsClient_DataDarrerCanviEntitat</item>
+        <item>@string/TEntitatsClient_DataPeticioAssociacio</item>
+        <item>@string/TEntitatsClient_ContacteAssociacio</item>
+        <item>@string/TEntitatsClient_DescripcioAssociacio</item>
+        <item>@string/TEntitatsClient_eMailAssociacio</item>
+        <item>@string/TEntitatsClient_DataAltaAssociacio</item>
+        <item>@string/TEntitatsClient_DataFiAssociacio</item>
+        <item>@string/TEntitatsClient_DataDarrerCanviAssociacio</item>
+        <item>@string/TEntitatsClient_EstatAssociacio</item>
+        <item>@string/TEntitatsClient_HiHanCanvis</item>
+    </string-array>
+    <!-- Funcions -->
+    <string name="TEntitatsClientCreate">CREATE TABLE %1$s (
+                                %2$d INTEGER PRIMARY KEY,
+                                %3$s VARCHAR(100),
+				                %4$s VARCHAR(100),
+				                %5$s VARCHAR(2),
+				                %6$s VARCHAR(100),
+				                %7$s VARCHAR(100),
+				                %8$s VARCHAR(15),
+				                %9$s INTEGER,
+                                %10$s VARCHAR(20),
+                                %11$s VARCHAR(20),
+				                %12$s VARCHAR(100),
+				                %13$s VARCHAR(100),
+				                %14$s VARCHAR(100),
+				                %15$s VARCHAR(20),
+				                %16$s VARCHAR(20),
+				                %17$s VARCHAR(20),
+                                %18$s INTEGER,
+                                %19$s INTEGER)
+    </string>
+    <!-- ################################################################################### -->
     <!-- String-Arrays -->
+    <!-- ################################################################################### -->
     <string-array name="Idioma">
         <item>@string/Configuracio_Idioma</item>
         <item>English</item>
