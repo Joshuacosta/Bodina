@@ -24,6 +24,7 @@ public class SQLDB extends SQLiteOpenHelper {
         // Definim les taules de la BBDD
         //String CREATE = Globals.g_Native.getString(R.string.TClient_Create);
 
+        // Experiment
         int aux = Globals.g_Native.getResources().getIdentifier("TClientCreate", "string", "com.example.it00046.bodina");
         String auxc = Globals.g_Native.getString(aux);
 
@@ -48,7 +49,7 @@ public class SQLDB extends SQLiteOpenHelper {
         // Aqui expresem el canvis (no se si podria ser necessari trespassar dades i tal
         // per evitar problema en l'usuari
         String DROP = String.format(Globals.g_Native.getString(R.string.TDrop),
-                Globals.g_Native.getString(R.string.TClient));
+                                    Globals.g_Native.getString(R.string.TClient));
         db.execSQL(DROP);
         // create fresh books table
         this.onCreate(db);

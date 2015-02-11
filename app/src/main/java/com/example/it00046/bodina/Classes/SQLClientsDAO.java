@@ -205,24 +205,23 @@ import android.util.Log;
 
 import com.example.it00046.bodina.R;
 
-public class SQLClientsDAO {
+public final class SQLClientsDAO {
     // Database fields
     private SQLDB db;
-    private String[] allColumns = Globals.g_Native.getResources().getStringArray(R.array.TClient_Camps);
 
     public SQLClientsDAO(Context context) {
-        db = new SQLDB(context);
+        //db = new SQLDB(context);
     }
 
     public void open() throws SQLException {
-        Globals.g_DB = db.getWritableDatabase();
+        //Globals.g_DB = db.getWritableDatabase();
     }
 
     public void close() {
-        Globals.g_DB.close();
+        //Globals.g_DB.close();
     }
 
-    public void createClient(Client client) {
+    public static void createClient(Client client) {
         ContentValues values = new ContentValues();
         values.put(Globals.g_Native.getString(R.string.TClient_CodiClient), client.CodiClient);
         values.put(Globals.g_Native.getString(R.string.TClient_Contacte), client.Contacte);
@@ -248,16 +247,17 @@ public class SQLClientsDAO {
         */
     }
 
-    public void deleteClient(Client client) {
+    public static void deleteClient(Client client) {
         String id = client.CodiClient;
         Globals.g_DB.delete(Globals.g_Native.getString(R.string.TClient), Globals.g_Native.getString(R.string.TClient_CodiClient) + " = " + id, null);
     }
 
-    public List<Client> getAllClients() {
+    public static List<Client> getAllClients() {
         List<Client> clients = new ArrayList<Client>();
 
         Cursor cursor = Globals.g_DB.query(Globals.g_Native.getString(R.string.TClient),
-                allColumns, null, null, null, null, null);
+                Globals.g_Native.getResources().getStringArray(R.array.TClient_Camps)
+                , null, null, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -271,11 +271,11 @@ public class SQLClientsDAO {
     }
 
     // Funcio per recuperar el client, nomès tenim un.
-    public Client RecuperaClient(){
+    public static Client RecuperaClient(){
         Client client = new Client();
 
         Cursor cursor = Globals.g_DB.query(Globals.g_Native.getString(R.string.TClient), // a. table
-                                        allColumns, // b. column names
+                                        Globals.g_Native.getResources().getStringArray(R.array.TClient_Camps), // b. column names
                                         null, // c. selections
                                         null, // d. selections args
                                         null, // e. group by
@@ -295,7 +295,7 @@ public class SQLClientsDAO {
 
     //
     // Funcions privades
-    private Client cursorToClient(Cursor cursor) {
+    private static Client cursorToClient(Cursor cursor) {
         Client client = new Client();
 
 
