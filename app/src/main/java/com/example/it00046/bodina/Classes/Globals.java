@@ -18,6 +18,7 @@ public final class Globals
 
     public static SQLClientsDAO g_DB_DAO;
     public static SQLiteDatabase g_DB;
+    public static SQLDB g_BBDD;
     // Constants
     // Operatives
     public static final int k_OPE_Alta = 0;
@@ -27,7 +28,13 @@ public final class Globals
     // - Treball
     public static final String k_ClientNOU = "NOU";
 
-    public void Globals()
-    {
+    public static void CreateBBDD(){
+        g_BBDD = new SQLDB(g_Native);
+        g_DB = g_BBDD.getWritableDatabase();
     }
+
+    public static void TancarBBDD(){
+        g_DB.close();
+    }
+
 }
