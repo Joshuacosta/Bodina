@@ -24,12 +24,12 @@ public class Celebracions extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.celebracions);
 
-
         // Definim contexte a nivel global
         Globals.g_Native = this.getApplicationContext();
 
-        Globals.g_DB_DAO = new SQLClientsDAO(this);
-        Globals.g_DB_DAO.open();
+        //Globals.g_DB_DAO = new SQLClientsDAO(this);
+        //Globals.g_DB_DAO.open();
+        Globals.CreateBBDD();
 
         // Si estem executant i no hem trobat dades (no existia la BBDD) obrim la finestra de
         // configuració perque l'usuari determini Pais, idioma (abans hem aplicat el del
