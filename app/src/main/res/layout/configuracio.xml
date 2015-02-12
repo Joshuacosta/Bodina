@@ -106,7 +106,6 @@
                 android:layout_gravity="right|center_vertical"
                 android:background="@android:drawable/ic_delete"
                 android:onClick="btnEsborrarOnClick"/>
-
         </FrameLayout>
 
         <LinearLayout

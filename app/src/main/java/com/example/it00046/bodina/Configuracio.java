@@ -166,11 +166,10 @@ public class Configuracio extends ActionBarActivity{
         }
     }
 
-    public void btnEsborrarOnClick(View view){
+    public void btnEsborrarOnClick(View view) {
         lTXT_Prova.setError(null);
         lTXT_Prova.setText(null);
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
