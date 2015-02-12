@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.it00046.bodina.Classes.Client;
@@ -21,7 +22,6 @@ import com.example.it00046.bodina.Classes.Globals;
 import com.example.it00046.bodina.Classes.RequiredSpinnerAdapter;
 import com.example.it00046.bodina.Classes.SQLClientsDAO;
 import com.example.it00046.bodina.Classes.Validacio;
-import com.example.it00046.bodina.Listen.OnItemSelected_Listener_SpinnerIdioma;
 
 import java.util.ArrayList;
 
@@ -30,31 +30,30 @@ public class Configuracio extends ActionBarActivity{
 
     private Spinner lSPN_Idioma, lSPN_Paissos;
     private EditText lTXT_Name, lTXT_eMail, lTXT_Contacte;
+    private TextView lTextIdioma, lTextPais;
+
     private SQLClientsDAO sqlclientsDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int spinnerPostion;
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.configuracio);
 
+        //
+        lTextIdioma = (TextView) findViewById(R.id.litIdioma);
+        lTextPais = (TextView) findViewById(R.id.litPais);
         // Codi per tractar el spinner del idioma
-
-        /*
         lSPN_Idioma = (Spinner)findViewById(R.id.spinnerIdioma);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.Idioma,android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        lSPN_Idioma.setAdapter(adapter);
-        */
-        ArrayAdapter<String> arrayAdapter = new RequiredSpinnerAdapter<String>(this, R.layout.configuracio, <ArrayList>getResources().getStringArray(R.array.Idioma));
-
-        lSPN_Idioma.setOnItemSelectedListener(new OnItemSelected_Listener_SpinnerIdioma());
-
-        // Codi per tractar el spinner de paissos
-        lSPN_Paissos = (Spinner)findViewById(R.id.spinnerPais);
-        lSPN_Paissos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ArrayAdapter<CharSequence> adapter_Idioma = ArrayAdapter.createFromResource(this,R.array.Idioma,android.R.layout.simple_spinner_item);
+        adapter_Idioma.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        lSPN_Idioma.setAdapter(adapter_Idioma);
+        lSPN_Idioma.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView parent, View view, int pos, long id) {
-                Toast.makeText(parent.getContext(), "Selected pais : " + parent.getSelectedItem(), Toast.LENGTH_SHORT).show();
+                // Esborrem possible error
+                lTextIdioma.setError(null);
             }
 
             @Override
@@ -62,9 +61,24 @@ public class Configuracio extends ActionBarActivity{
 
             }
         });
+        // Codi per tractar el spinner de paissos
+        lSPN_Paissos = (Spinner)findViewById(R.id.spinnerPais);
+        ArrayAdapter<CharSequence> adapter_Pais = ArrayAdapter.createFromResource(this,R.array.Paisos,android.R.layout.simple_spinner_item);
+        adapter_Pais.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        lSPN_Paissos.setAdapter(adapter_Pais);
+        lSPN_Paissos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView parent, View view, int pos, long id) {
+                // Esborrem possible error
+                lTextPais.setError(null);
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView parent) {
 
-                // Informem les dades si es necessari
+            }
+        });
+        // Informem les dades si es necessari
         if (Globals.g_Client.CodiClient != ""){
             // Mostrem dades
             lTXT_Name = (EditText) findViewById(R.id.TextName);
@@ -73,26 +87,33 @@ public class Configuracio extends ActionBarActivity{
             lTXT_eMail.setText(Globals.g_Client.eMail);
             lTXT_Contacte = (EditText) findViewById(R.id.TexteContacte);
             lTXT_Contacte.setText(Globals.g_Client.Contacte);
-
-            //lSPN_Idioma = (Spinner) findViewById(R.id.spinnerIdioma);
-            //SimpleCursorAdapter adapter_idioma = (SimpleCursorAdapter) lSPN_Idioma.getAdapter();
-            /*
-            if (Globals.g_Client.Idioma != ""){
-                for (int position = 0; position < adapter.getCount(); position++)
-                {
-                    if(adapter.getItem(position).toString() == Globals.g_Client.Idioma) {
-                        lSPN_Idioma.setSelection(position);
-                        break;
-                    }
-                }
+            if (!Globals.g_Client.Idioma.isEmpty()){
+                spinnerPostion = adapter_Idioma.getPosition(Globals.g_Client.Idioma);
+                lSPN_Idioma.setSelection(spinnerPostion);
             }
-            */
+            if (!Globals.g_Client.Pais.isEmpty()){
+                spinnerPostion = adapter_Pais.getPosition(Globals.g_Client.Pais);
+                lSPN_Paissos.setSelection(spinnerPostion);
+            }
         }
-
-        // TextWatcher would let us check validation error on the fly
+        // Validacions de la finestra
         lTXT_Name.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
                 Validacio.hasText(lTXT_Name);
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
+            public void onTextChanged(CharSequence s, int start, int before, int count){}
+        });
+        lTXT_Contacte.addTextChangedListener(new TextWatcher() {
+            public void afterTextChanged(Editable s) {
+                Validacio.hasText(lTXT_Contacte);
+            }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after){}
+            public void onTextChanged(CharSequence s, int start, int before, int count){}
+        });
+        lTXT_eMail.addTextChangedListener(new TextWatcher() {
+            public void afterTextChanged(Editable s) {
+                Validacio.isEmailAddress(lTXT_eMail, true);
             }
             public void beforeTextChanged(CharSequence s, int start, int count, int after){}
             public void onTextChanged(CharSequence s, int start, int before, int count){}
@@ -101,14 +122,21 @@ public class Configuracio extends ActionBarActivity{
 
     private boolean checkValidation() {
         boolean ret = true;
+        TextView lTextIdioma = (TextView) findViewById(R.id.litIdioma);
+        TextView lTextPais = (TextView) findViewById(R.id.litPais);
 
         if (!Validacio.hasText(lTXT_Name)) ret = false;
         if (!Validacio.hasText(lTXT_Contacte)) ret = false;
         if (!Validacio.hasText(lTXT_eMail)) ret = false;
+        if (lSPN_Idioma.getSelectedItem().toString() == Globals.g_Native.getString(R.string.llista_Select)){
+            lTextIdioma.setError(Globals.g_Native.getString(R.string.error_CampObligatori));
+            ret = false;
+        }
+        if (lSPN_Paissos.getSelectedItem().toString() == Globals.g_Native.getString(R.string.llista_Select)){
+            lTextPais.setError(Globals.g_Native.getString(R.string.error_CampObligatori));
+            ret = false;
+        }
 
-        RequiredSpinnerAdapter adapter = (RequiredSpinnerAdapter)lSPN_Idioma.getAdapter();
-        View view = lSPN_Idioma.getSelectedView();
-        adapter.setError(view, "Please select a value");
         return ret;
 
     }
@@ -117,7 +145,7 @@ public class Configuracio extends ActionBarActivity{
         Client client = new Client();
 
         // Validem que els camps estiguin informats
-        //if () {
+        if (checkValidation()) {
 
             client.Nom = lTXT_Name.getText().toString();
             client.eMail = lTXT_eMail.getText().toString();
@@ -129,10 +157,12 @@ public class Configuracio extends ActionBarActivity{
             // Gravem les dades del client i tornem enrera
             Globals.g_Client = client;
             this.finish();
-        //}
-        //else{
-
-        //}
+        }
+        else{
+            Toast.makeText(Configuracio.this,
+                           Globals.g_Native.getString(R.string.error_Layout),
+                           Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override

@@ -286,6 +286,7 @@ public final class SQLClientsDAO {
         if (cursor.getCount() == 1) {
             cursor.moveToFirst();
             client = cursorToClient(cursor);
+            Globals.g_NoHiHanDades = false;
         }
         else {
             Globals.g_NoHiHanDades = true;

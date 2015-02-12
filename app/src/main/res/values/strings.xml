@@ -7,6 +7,8 @@
     <!-- Generic -->
     <string name="error_CampObligatori">Required field</string>
     <string name="error_eMailIncorrecte">Invalid mail</string>
+    <string name="error_Layout">There are some wrong field</string>
+    <string name="llista_Select">Select...</string>
 
     <!-- Layout Celebracions -->
     <string name="app_name">Bodina</string>
@@ -18,8 +20,8 @@
     <string name="title_activity_configuracio">Settings</string>
     <string name="Configuracio_Nom">Name</string>
     <string name="Configuracio_eMail">e-Mail</string>
-    <string name="Configuracio_Idioma">Select language to comunicate...</string>
-    <string name="Configuracio_Pais">Select country...</string>
+    <string name="Configuracio_Idioma">Language to comunicate</string>
+    <string name="Configuracio_Pais">Country</string>
     <string name="Configuracio_Contacte">Contact</string>
     <string name="Configuracio_DataAlta">Entry date</string>
     <string name="Configuracio_BotoAcceptar">Accept</string>
@@ -146,7 +148,7 @@
     <!-- String-Arrays -->
     <!-- ################################################################################### -->
     <string-array name="Idioma">
-        <item>@string/Configuracio_Idioma</item>
+        <item>@string/llista_Select</item>
         <item>English</item>
         <item>Spanish</item>
         <item>Catalan</item>
@@ -155,7 +157,7 @@
     </string-array>
 
     <string-array name="Paisos">
-        <item>@string/Configuracio_Pais</item>
+        <item>@string/llista_Select</item>
         <item>Andorra</item>
         <item>United Arab Emirates</item>
         <item>Afghanistan</item>
