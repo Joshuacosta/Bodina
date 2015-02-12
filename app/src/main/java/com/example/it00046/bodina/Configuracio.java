@@ -29,7 +29,7 @@ import java.util.ArrayList;
 public class Configuracio extends ActionBarActivity{
 
     private Spinner lSPN_Idioma, lSPN_Paissos;
-    private EditText lTXT_Name, lTXT_eMail, lTXT_Contacte;
+    private EditText lTXT_Name, lTXT_eMail, lTXT_Contacte, lTXT_Prova;
     private TextView lTextIdioma, lTextPais;
 
     private SQLClientsDAO sqlclientsDAO;
@@ -41,6 +41,7 @@ public class Configuracio extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.configuracio);
 
+        lTXT_Prova = (EditText) findViewById(R.id.TextProva);
         //
         lTextIdioma = (TextView) findViewById(R.id.litIdioma);
         lTextPais = (TextView) findViewById(R.id.litPais);
@@ -163,6 +164,11 @@ public class Configuracio extends ActionBarActivity{
                            Globals.g_Native.getString(R.string.error_Layout),
                            Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void btnEsborrarOnClick(View view){
+        lTXT_Prova.setError(null);
+        lTXT_Prova.setText(null);
     }
 
     @Override
