@@ -128,7 +128,7 @@ public class Configuracio extends ActionBarActivity{
 
         if (!Validacio.hasText(lTXT_Name)) ret = false;
         if (!Validacio.hasText(lTXT_Contacte)) ret = false;
-        if (!Validacio.hasText(lTXT_eMail)) ret = false;
+        if (!Validacio.isEmailAddress(lTXT_eMail, true)) ret = false;
         if (lSPN_Idioma.getSelectedItem().toString() == Globals.g_Native.getString(R.string.llista_Select)){
             lTextIdioma.setError(Globals.g_Native.getString(R.string.error_CampObligatori));
             ret = false;
@@ -155,6 +155,7 @@ public class Configuracio extends ActionBarActivity{
             client.Idioma = lSPN_Idioma.getSelectedItem().toString();
 
             Globals.g_DB_DAO.createClient(client);
+            SQLClientsDAO.createClient(client);
             // Gravem les dades del client i tornem enrera
             Globals.g_Client = client;
             this.finish();
